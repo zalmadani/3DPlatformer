@@ -26,6 +26,8 @@ public class CharacterController : MonoBehaviour
     {
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     
