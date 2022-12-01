@@ -20,10 +20,13 @@ public class CharacterController : MonoBehaviour
     public float jumpForce = 300.0f;
 
     float rotationSpeed = 2.0f;
-    float camRotationSpeed = 1.5f; 
+    float camRotationSpeed = 1.5f;
+    Animator myAnim;
 
+    Vector3 respawnPoint = new Vector3(-9.52f, 2.17f, 51.83f);
     void Start()
     {
+        myAnim = GetComponentInChildren<Animator>();
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
 
@@ -34,6 +37,7 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+       
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
@@ -56,6 +60,17 @@ public class CharacterController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, rotation, 0.0f));
     
         camRotation = camRotation + Input.GetAxis("Mouse Y"); 
-        cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f)); 
+        cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f));
+
+        myAnim.SetFloat("speed", newVelocity.magnitude);
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Death box")
+            {
+                transform.position = respawnPoint;
+            }
+        }
+
     }
 }
