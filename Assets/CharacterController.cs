@@ -23,7 +23,6 @@ public class CharacterController : MonoBehaviour
     float camRotationSpeed = 1.5f;
     Animator myAnim;
 
-    Vector3 respawnPoint = new Vector3(-9.52f, 2.17f, 51.83f);
     void Start()
     {
         myAnim = GetComponentInChildren<Animator>();
@@ -64,13 +63,6 @@ public class CharacterController : MonoBehaviour
 
         myAnim.SetFloat("speed", newVelocity.magnitude);
 
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "Death box")
-            {
-                transform.position = respawnPoint;
-            }
-        }
-
+       
     }
 }
