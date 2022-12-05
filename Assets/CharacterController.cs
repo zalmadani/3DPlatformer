@@ -37,6 +37,11 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
