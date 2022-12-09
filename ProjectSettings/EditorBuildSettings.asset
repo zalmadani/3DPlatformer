@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ACTUAL 3D PLATFORMER.unity
     guid: ee93406bc3b0bf447b1cd685055ead55
+  - enabled: 1
+    path: Assets/Scenes/win.unity
+    guid: c2a165b47a5b37d4ea4f03a8c01795e1
   m_configObjects: {}
